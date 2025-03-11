@@ -1,0 +1,21 @@
+apiServer: apps/v1
+kind: Deployment
+metadata:
+  name: ivolve-deployment 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivolve-java-app
+      
+  template:
+     metadata: 
+        name: ivolve-app
+        labels:
+           app: ivolve-java-app
+     spec:
+         containers:
+           - name: ivolve-java-container
+             image: amirmamdouh123/ivolve-java-app-image
+             ports: 
+              - containerPort: 8080
